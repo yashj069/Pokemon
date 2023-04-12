@@ -1,37 +1,14 @@
-import { GET_POKEMON_EVOLUTION } from "@/graphql/Queries";
-import { useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import React from "react";
 import arrow from "../assets/arow1.svg";
 import Image from "next/image";
 import Types from "./Types";
 
-const Evolution = ({ isVisible, onClose, pokid, pokemonName }) => {
+const Evolution = ({ isVisible, onClose, pok }) => {
   if (!isVisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-
-  const { loading, error, data } = useQuery(GET_POKEMON_EVOLUTION, {
-    variables: {
-      id: pokid,
-      name: pokemonName,
-    },
-  });
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center space-y-10 pt-60">
-        <div className=" pokemon"></div>
-      </div>
-    );
-  }
-  if (error) {
-    console.log(error);
-    return "error";
-  }
-  // console.log(data);
-  const pok = data.pokemon;
 
   return (
     <div

@@ -100,8 +100,7 @@ const Details = ({ pokemo }) => {
             <Evolution
               isVisible={show}
               onClose={() => setShow(false)}
-              pokemonName={pokemon.name}
-              pokid={pokid}
+              pok={pokemon}
             />
           </div>
         </div>
